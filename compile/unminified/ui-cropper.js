@@ -2,10 +2,10 @@
  * uiCropper v1.0.8
  * https://crackerakiua.github.io/ui-cropper/
  *
- * Copyright (c) 2018 Alex Kaul
+ * Copyright (c) 2019 Alex Kaul
  * License: MIT
  *
- * Generated at Tuesday, December 11th, 2018, 7:28:54 PM
+ * Generated at Tuesday, April 9th, 2019, 5:15:11 PM
  */
 (function() {
 angular.module('uiCropper', []);
@@ -3839,7 +3839,7 @@ angular.module('uiCropper').directive('uiCropper', ['$timeout', 'cropHost', 'cro
      * */
     ColorThief.prototype.getColor = function(sourceImage, quality) {
         var palette = this.getPalette(sourceImage, 5, quality);
-        var dominantColor = palette[0];
+        var dominantColor = palette !== null ? palette[0] : {r:255, g:255, b:255};
         return dominantColor;
     };
 
