@@ -5,7 +5,7 @@
  * Copyright (c) 2019 Alex Kaul
  * License: MIT
  *
- * Generated at Tuesday, April 9th, 2019, 5:15:11 PM
+ * Generated at Wednesday, April 10th, 2019, 6:50:26 AM
  */
 (function() {
 angular.module('uiCropper', []);
@@ -3839,7 +3839,7 @@ angular.module('uiCropper').directive('uiCropper', ['$timeout', 'cropHost', 'cro
      * */
     ColorThief.prototype.getColor = function(sourceImage, quality) {
         var palette = this.getPalette(sourceImage, 5, quality);
-        var dominantColor = palette !== null ? palette[0] : {r:255, g:255, b:255};
+        var dominantColor = palette[0];
         return dominantColor;
     };
 
@@ -3889,6 +3889,12 @@ angular.module('uiCropper').directive('uiCropper', ['$timeout', 'cropHost', 'cro
                     pixelArray.push([r, g, b]);
                 }
             }
+        }
+
+        // If this happens then the image is basically white, or
+        // transparent. Either way.
+        if (pixelArray.length <= 0) {
+            pixelArray.push([255, 255, 255]);
         }
 
         // Send array to quantize function which clusters values
